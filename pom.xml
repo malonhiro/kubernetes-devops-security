@@ -80,7 +80,7 @@
 				 <outputFormats>
 				 	<outputFormat>XML</outputFormat>
 					<outputFormat>HTML</outputFormat>
-				 </putputFormats>
+				 </outputFormats>
 				</configuration>
 			</plugin>
 		</plugins>
