@@ -19,11 +19,21 @@ pipeline {
               }
             }
         }
-       stage('SAST') {
+      stage('SAST') {
             steps {
               sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://20.127.143.197:9000 -Dsonar.login=sqp_b606e58a2a096d7b151046b26d7f6d7daa275f1b"
             }
-        }    
+        }
+      stage('Vulnerability Scan') {
+        steps {
+          sh "mvn dependency-check:check"
+        }
+        post {
+          always {
+            dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+          }
+        }
+       }    
       stage('Docker Build') {
         steps {
         withDockerRegistry([credentialsId:"docker-hub",url: ""]) {
