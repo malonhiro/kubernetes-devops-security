@@ -18,6 +18,11 @@ pipeline {
                 jacoco execPattern: 'target/jacoco.exec'
               }
             }
+        }
+       stage('SAST') {
+            steps {
+              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://20.127.143.197:9000 -Dsonar.login=sqp_b606e58a2a096d7b151046b26d7f6d7daa275f1b"
+            }
         }    
       stage('Docker Build') {
         steps {
