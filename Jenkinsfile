@@ -33,6 +33,7 @@ pipeline {
             "trivy Scan": {
               sh "bash trivy-docker-image-scan.sh"
             }
+          )
         }
         post {
           always {
