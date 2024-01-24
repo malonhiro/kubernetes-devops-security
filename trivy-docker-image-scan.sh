@@ -8,9 +8,9 @@ exit_code=$?
 
 echo "Exist code: $exit_code"
 
-if [[ "${exit_code}" == 1]];then
+if [[ "${exit_code}" == 1 ]];then
     echo "image scan failed"
     exit 1
 else
     echo "image scan pass"
-fi;
+fi
