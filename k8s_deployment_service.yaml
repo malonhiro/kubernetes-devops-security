@@ -10,6 +10,9 @@ spec:
     matchLabels:
       app: devsecops
   strategy: {}
+  volumes:
+  - name: cache-volume
+    emptyDir: {}
   template:
     metadata:
       labels:
@@ -23,6 +26,9 @@ spec:
           runAsNonRoot: true
           runAsUser: 100
           readOnlyRootFilesystem: true
+        volumeMounts:
+        - mountPath: /tmp
+          name: cache-volume
 ---
 apiVersion: v1
 kind: Service
