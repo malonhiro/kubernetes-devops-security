@@ -10,14 +10,14 @@ spec:
     matchLabels:
       app: devsecops
   strategy: {}
-  volumes:
-  - name: cache-volume
-    emptyDir: {}
   template:
     metadata:
       labels:
         app: devsecops
     spec:
+      volumes:
+      - name: cache-volume
+        emptyDir: {}
       serviceAccountName: default
       containers:
       - image: replace
