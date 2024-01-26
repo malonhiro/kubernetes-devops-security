@@ -106,12 +106,12 @@ pipeline {
             sh 'bash -x zap.sh'
           }
         }
+        post {
+          always {
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'OWASP_ZAP HTML report', reportTitles: 'OWASP_ZAP HTML report', useWrapperFileDirectly: true])
+          }
+        }
       }
   }
 }
 
-post {
-  always {
-    publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'OWASP_ZAP HTML report', reportTitles: 'OWASP_ZAP HTML report', useWrapperFileDirectly: true])
-  }
-}
